@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fffaf6">
+  <meta name="description" content="AN Technologies, powered by AN Group, founded by Abhranil Sarkar. Exploring electronics, IoT, smart automation, project kits and digital solutions.">
+
+  <title>AN Technologies | Founded by Abhranil Sarkar</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fffaf6;
+      --white: #ffffff;
+      --text: #20213a;
+      --muted: #707287;
+      --blue: #3978ff;
+      --cyan: #05bfc8;
+      --purple: #8b5cf6;
+      --orange: #ff8a32;
+      --red: #ff5364;
+      --yellow: #ffc928;
+      --pink: #f56bb5;
+      --border: rgba(45, 47, 85, .10);
+      --shadow: 0 18px 55px rgba(51, 54, 105, .09);
+      --radius: 24px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .background-glow {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 5% 8%, rgba(255,138,50,.17), transparent 28%),
+        radial-gradient(ellipse at 90% 12%, rgba(57,120,255,.15), transparent 28%),
+        radial-gradient(ellipse at 82% 65%, rgba(245,107,181,.13), transparent 28%),
+        radial-gradient(ellipse at 10% 85%, rgba(255,201,40,.16), transparent 27%),
+        radial-gradient(ellipse at 55% 40%, rgba(139,92,246,.08), transparent 35%);
+    }
+
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .18;
+      background-image:
+        linear-gradient(rgba(72,83,132,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(72,83,132,.055) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    .section {
+      padding: 95px 0;
+      scroll-margin-top: 100px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: "Space Grotesk", sans-serif;
+      line-height: 1.15;
+      letter-spacing: -1px;
+    }
+
+    .gradient-text {
+      color: var(--blue);
+      background: linear-gradient(
+        110deg,
+        #3978ff,
+        #8b5cf6,
+        #f56bb5,
+        #ff7043,
+        #e5a900
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--blue);
+      background: rgba(57,120,255,.075);
+      border: 1px solid rgba(57,120,255,.14);
+      border-radius: 100px;
+      padding: 7px 14px;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 12px rgba(255,138,50,.7);
+    }
+
+    .section-heading {
+      max-width: 690px;
+      margin: 0 auto 45px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      margin: 18px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* Navigation */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,250,246,.91);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      white-space: nowrap;
+    }
+
+    .logo-symbol {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--purple), var(--pink));
+      box-shadow: 0 7px 20px rgba(114,95,240,.22);
+    }
+
+    .logo small {
+      display: block;
+      font-family: "DM Sans", sans-serif;
+      color: var(--muted);
+      font-size: .63rem;
+      letter-spacing: 1.4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      color: #5c5d72;
+      font-size: .85rem;
+      font-weight: 700;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .nav-links .nav-cta {
+      color: white;
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: linear-gradient(110deg, var(--blue), var(--purple));
+    }
+
+    /* Hero / Home */
+
+    .hero {
+      min-height: 690px;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      align-items: center;
+      gap: 40px;
+      padding: 75px 0 80px;
+    }
+
+    .hero-content {
+      animation: fadeUp .8s ease both;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 6.5vw, 5.25rem);
+      margin: 24px 0 20px;
+      line-height: 1.02;
+    }
+
+    .hero h1 span {
+      display: block;
+    }
+
+    .hero-description {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      margin-bottom: 24px;
+    }
+
+    /* Founder information appears prominently on Home */
+
+    .founder-card {
+      max-width: 480px;
+      padding: 19px 21px;
+      margin: 24px 0;
+      border-radius: 18px;
+      border: 1px solid rgba(139,92,246,.18);
+      background:
+        linear-gradient(110deg, rgba(57,120,255,.07), rgba(245,107,181,.08), rgba(255,201,40,.10)),
+        rgba(255,255,255,.88);
+      box-shadow: 0 12px 35px rgba(80,75,150,.07);
+    }
+
+    .founder-label {
+      display: block;
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .founder-name {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.13rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .founder-brand {
+      display: block;
+      margin-top: 4px;
+      color: #6556cf;
+      font-size: .87rem;
+      font-weight: 700;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      padding: 13px 20px;
+      border-radius: 13px;
+      font-size: .88rem;
+      font-weight: 800;
+      border: 1px solid var(--border);
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      color: white;
+      border: none;
+      background: linear-gradient(110deg, var(--blue), var(--purple), var(--pink));
+      box-shadow: 0 10px 26px rgba(99,103,231,.23);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.85);
+    }
+
+    .hero-note {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .hero-note span {
+      color: #12a87c;
+      font-weight: 800;
+    }
+
+    /* Hero illustration */
+
+    .hero-visual {
+      min-height: 440px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      animation: fadeIn 1s ease both;
+    }
+
+    .orbit {
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border: 1px solid rgba(80,95,180,.18);
+      border-radius: 50%;
+      animation: rotate 28s linear infinite;
+    }
+
+    .orbit::before,
+    .orbit::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .orbit::before {
+      width: 12px;
+      height: 12px;
+      background: var(--orange);
+      top: 35px;
+      left: 46px;
+      box-shadow: 0 0 20px rgba(255,138,50,.7);
+    }
+
+    .orbit::after {
+      width: 10px;
+      height: 10px;
+      background: var(--blue);
+      bottom: 55px;
+      right: 15px;
+      box-shadow: 0 0 18px rgba(57,120,255,.7);
+    }
+
+    .orbit-two {
+      position: absolute;
+      width: 265px;
+      height: 265px;
+      border: 1px dashed rgba(139,92,246,.35);
+      border-radius: 50%;
+      animation: rotate 22s linear infinite reverse;
+    }
+
+    .core {
+      width: 185px;
+      height: 185px;
+      display: grid;
+      place-items: center;
+      border-radius: 42px;
+      transform: rotate(-8deg);
+      background: linear-gradient(145deg, white, #f0ecff);
+      border: 1px solid rgba(139,92,246,.17);
+      box-shadow: 0 25px 80px rgba(108,88,231,.17);
+      position: relative;
+      z-index: 2;
+    }
+
+    .core-inner {
+      width: 138px;
+      height: 138px;
+      border-radius: 32px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.7rem;
+      font-weight: 800;
+      letter-spacing: -4px;
+      background: linear-gradient(135deg, var(--blue), var(--purple), var(--pink));
+      box-shadow: 0 12px 30px rgba(111,91,232,.3);
+    }
+
+    .float-card {
+      position: absolute;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 15px;
+      border: 1px solid white;
+      border-radius: 16px;
+      background: rgba(255,255,255,.93);
+      box-shadow: var(--shadow);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .float-card strong {
+      display: block;
+      font-size: .8rem;
+    }
+
+    .float-card small {
+      display: block;
+      color: var(--muted);
+      font-size: .69rem;
+    }
+
+    .float-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: #edf2ff;
+    }
+
+    .card-one { top: 55px; right: 0; }
+    .card-two { left: -5px; bottom: 75px; animation-delay: -2s; }
+    .card-three { right: 0; bottom: 30px; animation-delay: -3.5s; }
+
+    /* Statistics */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 24px 10px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(255,255,255,.82);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--blue);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.7rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    /* About */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .panel {
+      padding: 33px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 12px 40px rgba(50,50,90,.045);
+    }
+
+    .panel h3 {
+      font-size: 1.6rem;
+      margin: 16px 0;
+    }
+
+    .panel p {
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .about-visual {
+      min-height: 300px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 25%, rgba(255,138,50,.25), transparent 34%),
+        radial-gradient(circle at 80% 30%, rgba(57,120,255,.23), transparent 35%),
+        radial-gradient(circle at 50% 90%, rgba(245,107,181,.2), transparent 35%),
+        white;
+    }
+
+    .about-art {
+      width: 175px;
+      height: 175px;
+      border-radius: 42px;
+      transform: rotate(-9deg);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 3.8rem;
+      font-weight: 800;
+      letter-spacing: -5px;
+      background: linear-gradient(135deg, var(--blue), var(--purple), var(--pink));
+      box-shadow: 0 25px 60px rgba(100,90,220,.25);
+    }
+
+    .about-art span {
+      transform: rotate(9deg);
+    }
+
+    /* Services */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      padding: 27px 24px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 12px 35px rgba(50,50,90,.035);
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+
+    .icon-blue { background: #eaf0ff; }
+    .icon-orange { background: #fff0e4; }
+    .icon-pink { background: #ffeaf5; }
+    .icon-yellow { background: #fff7d9; }
+    .icon-purple { background: #f0eaff; }
+    .icon-green { background: #e4faf1; }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 11px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    /* Approach banner */
+
+    .feature-band {
+      padding: 45px;
+      border-radius: 29px;
+      color: white;
+      background:
+        radial-gradient(circle at 5% 0%, rgba(255,201,40,.45), transparent 30%),
+        radial-gradient(circle at 95% 100%, rgba(245,107,181,.48), transparent 32%),
+        linear-gradient(120deg, #3978ff, #7756e8 55%, #8e58d6);
+      box-shadow: 0 22px 60px rgba(87,87,218,.2);
+    }
+
+    .feature-band h2 {
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      margin: 18px 0;
+    }
+
+    .feature-band > p {
+      max-width: 680px;
+      color: rgba(255,255,255,.85);
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 32px;
+    }
+
+    .feature-item {
+      padding: 20px;
+      border-radius: 17px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.10);
+    }
+
+    .feature-item strong {
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    .feature-item span {
+      color: rgba(255,255,255,.82);
+      font-size: .85rem;
+    }
+
+    /* Projects */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 23px;
+      background: rgba(255,255,255,.91);
+      box-shadow: 0 12px 38px rgba(50,50,90,.04);
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-art {
+      min-height: 205px;
+      display: grid;
+      place-items: center;
+    }
+
+    .art-one {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,201,40,.75), transparent 28%),
+        radial-gradient(circle at 80% 80%, rgba(245,107,181,.4), transparent 30%),
+        linear-gradient(135deg, #eaf1ff, #f4eaff);
+    }
+
+    .art-two {
+      background:
+        radial-gradient(circle at 75% 15%, rgba(255,138,50,.5), transparent 30%),
+        radial-gradient(circle at 15% 85%, rgba(57,120,255,.28), transparent 35%),
+        linear-gradient(135deg, #e7fbf7, #eef2ff);
+    }
+
+    .art-three {
+      background:
+        radial-gradient(circle at 75% 70%, rgba(245,107,181,.4), transparent 32%),
+        radial-gradient(circle at 15% 20%, rgba(57,120,255,.3), transparent 35%),
+        linear-gradient(135deg, #fff0e5, #f1eaff);
+    }
+
+    .art-four {
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,201,40,.6), transparent 30%),
+        radial-gradient(circle at 85% 85%, rgba(5,191,200,.3), transparent 35%),
+        linear-gradient(135deg, #f4eaff, #eaf1ff);
+    }
+
+    .project-symbol {
+      width: 105px;
+      height: 105px;
+      display: grid;
+      place-items: center;
+      border-radius: 28px;
+      font-size: 2.9rem;
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 15px 45px rgba(70,70,120,.13);
+    }
+
+    .project-info {
+      padding: 24px;
+    }
+
+    .project-tag {
+      display: inline-block;
+      padding: 5px 10px;
+      margin-bottom: 12px;
+      border-radius: 100px;
+      color: #6252c8;
+      background: #f0edff;
+      font-size: .7rem;
+      font-weight: 800;
+    }
+
+    .project-info h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .project-info p {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .project-note {
+      margin-top: 23px;
+      text-align: center;
+      color: var(--muted);
+      font-size: .83rem;
+    }
+
+    /* Work process */
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .process-step {
+      padding: 25px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--border);
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: white;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      margin-bottom: 18px;
+    }
+
+    .process-step h3 {
+      font-size: 1.12rem;
+      margin-bottom: 9px;
+    }
+
+    .process-step p {
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    /* Contact */
+
+    .contact-box {
+      padding: 55px 30px;
+      text-align: center;
+      border: 1px solid rgba(139,92,246,.16);
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 0% 100%, rgba(255,138,50,.16), transparent 32%),
+        radial-gradient(circle at 100% 0%, rgba(57,120,255,.15), transparent 32%),
+        radial-gradient(circle at 50% 100%, rgba(245,107,181,.13), transparent 32%),
+        rgba(255,255,255,.88);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box h2 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      margin: 20px 0;
+    }
+
+    .contact-box p {
+      max-width: 620px;
+      margin: 0 auto 25px;
+      color: var(--muted);
+    }
+
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .contact-note {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    /* Footer */
+
+    footer {
+      margin-top: 80px;
+      border-top: 1px solid var(--border);
+      background: rgba(255,255,255,.55);
+    }
+
+    .footer-inner {
+      min-height: 120px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 25px 0;
+    }
+
+    .footer-brand strong {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1rem;
+    }
+
+    .footer-brand span,
+    .footer-copy {
+      color: var(--muted);
+      font-size: .79rem;
+    }
+
+    .footer-copy {
+      text-align: right;
+    }
+
+    /* Animations */
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive design */
+
+    @media (max-width: 900px) {
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: .78rem; }
+      .hero { gap: 15px; }
+      .hero-visual { transform: scale(.88); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .feature-band { padding: 35px; }
+    }
+
+    @media (max-width: 650px) {
+      .container { width: 91%; }
+      .section { padding: 70px 0; }
+
+      .navbar {
+        min-height: 70px;
+        flex-wrap: wrap;
+        padding: 10px 0;
+      }
+
+      .logo { font-size: .96rem; }
+      .logo-symbol { width: 39px; height: 39px; }
+
+      .nav-links {
+        width: 100%;
+        gap: 0;
+        justify-content: space-between;
+        overflow-x: auto;
+        padding: 5px 0;
+      }
+
+      .nav-links a {
+        white-space: nowrap;
+        font-size: .75rem;
+        padding: 6px 4px;
+      }
+
+      .nav-links .nav-cta { padding: 7px 10px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 52px 0 40px;
+        gap: 0;
+        min-height: auto;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.8rem, 12vw, 4rem);
+      }
+
+      .hero-description { font-size: .95rem; }
+
+      .founder-card { padding: 16px; }
+      .founder-name { font-size: 1.04rem; }
+
+      .hero-visual {
+        min-height: 355px;
+        transform: scale(.86);
+        margin: -5px -15px 0;
+      }
+
+      .orbit { width: 300px; height: 300px; }
+      .orbit-two { width: 235px; height: 235px; }
+      .core { width: 160px; height: 160px; }
+      .core-inner { width: 120px; height: 120px; font-size: 2.3rem; }
+
+      .card-one { right: -5px; top: 20px; }
+      .card-two { left: -6px; bottom: 45px; }
+      .card-three { right: -4px; bottom: 8px; }
+
+      .float-card { padding: 9px; gap: 7px; }
+      .float-icon { width: 31px; height: 31px; }
+      .float-card strong { font-size: .7rem; }
+      .float-card small { font-size: .61rem; }
+
+      .stats { gap: 8px; }
+      .stat { padding: 17px 4px; border-radius: 15px; }
+      .stat strong { font-size: 1.3rem; }
+      .stat span { font-size: .67rem; }
+
+      .about-grid,
+      .projects-grid,
+      .services-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel { padding: 25px; }
+      .service-card { padding: 24px; }
+      .feature-band { padding: 27px 22px; border-radius: 23px; }
+      .feature-list { grid-template-columns: 1fr; gap: 12px; }
+      .contact-box { padding: 40px 20px; border-radius: 24px; }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .footer-copy { text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background-glow"></div>
+  <div class="grid-bg"></div>
+
+  <header>
+    <div class="container navbar">
+      <a class="logo" href="#home" aria-label="AN Technologies Home">
+        <span class="logo-symbol">AN</span>
+        <span>
+          AN TECHNOLOGIES
+          <small>POWERED BY AN GROUP</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact" class="nav-cta">Contact ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section class="container hero" id="home">
+      <div class="hero-content">
+        <span class="eyebrow">
+          <span class="dot"></span>
+          Ideas into Innovation
+        </span>
+
+        <h1>
+          <span>Think.</span>
+          <span class="gradient-text">Create.</span>
+          <span>Innovate.</span>
+        </h1>
+
+        <p class="hero-description">
+          Welcome to AN Technologies — a growing technology initiative
+          exploring electronics, IoT, smart automation, educational
+          project kits and creative digital solutions.
+        </p>
+
+        <!-- Founder credit prominently displayed on the home page -->
+        <div class="founder-card">
+          <span class="founder-label">The Founder</span>
+          <div class="founder-name">Founded by Abhranil Sarkar</div>
+          <span class="founder-brand">AN Technologies · Powered by AN Group</span>
+        </div>
+
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#services">
+            Explore Our Work ↗
+          </a>
+
+          <a class="btn btn-secondary" href="#about">
+            Discover Our Vision
+          </a>
+        </div>
+
+        <div class="hero-note">
+          <span>●</span>
+          Curiosity-driven ideas. Practical learning. Future-focused thinking.
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="AN Technologies illustration">
+        <div class="orbit"></div>
+        <div class="orbit-two"></div>
+
+        <div class="core">
+          <div class="core-inner">AN</div>
+        </div>
+
+        <div class="float-card card-one">
+          <div class="float-icon">⚡</div>
+          <div>
+            <strong>Smart Electronics</strong>
+            <small>Ideas meet circuits</small>
+          </div>
+        </div>
+
+        <div class="float-card card-two">
+          <div class="float-icon" style="background:#fff0e4">◈</div>
+          <div>
+            <strong>IoT & Automation</strong>
+            <small>Connected possibilities</small>
+          </div>
+        </div>
+
+        <div class="float-card card-three">
+          <div class="float-icon" style="background:#ffeaf5">✦</div>
+          <div>
+            <strong>Digital Creativity</strong>
+            <small>Build something new</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOCUS -->
+    <section class="container" aria-label="Our focus">
+      <div class="stats reveal">
+        <div class="stat">
+          <strong>01</strong>
+          <span>Learn by Building</span>
+        </div>
+
+        <div class="stat">
+          <strong>02</strong>
+          <span>Explore Technology</span>
+        </div>
+
+        <div class="stat">
+          <strong>03</strong>
+          <span>Think Beyond Limits</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow"><span class="dot"></span> About Us</span>
+          <h2>Technology begins with <span class="gradient-text">curiosity.</span></h2>
+          <p>
+            We believe that small ideas can become meaningful projects
+            through learning, experimentation and creative thinking.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="panel reveal">
+            <span class="eyebrow">Our Vision</span>
+            <h3>Make technology easier to explore.</h3>
+
+            <p>
+              AN Technologies is a student-led technology initiative
+              focused on learning, experimenting and developing ideas
+              in electronics, Internet of Things, automation and digital
+              development.
+            </p>
+
+            <br>
+
+            <p>
+              Our goal is to make technology more approachable through
+              practical projects, creative thinking and problem-solving.
+              We aim to grow step by step and learn from every experiment.
+            </p>
+
+            <br>
+
+            <p>
+              <strong>Founder:</strong> Abhranil Sarkar<br>
+              <strong>Powered by:</strong> AN Group
+            </p>
+          </div>
+
+          <div class="panel about-visual reveal">
+            <div class="about-art"><span>AN</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow"><span class="dot"></span> What We Explore</span>
+          <h2>Ideas that connect <span class="gradient-text">technology.</span></h2>
+          <p>
+            Exploring practical technology concepts, educational projects
+            and digital creativity.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="icon icon-blue">⌘</div>
+            <h3>Electronics & IoT</h3>
+            <p>
+              Exploring Arduino, ESP32, sensors and connected devices
+              through hands-on experiments and prototypes.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon icon-orange">⚡</div>
+            <h3>Smart Automation</h3>
+            <p>
+              Learning how sensors, controllers and simple automation
+              systems can address everyday problems.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon icon-pink">▣</div>
+            <h3>Educational Project Kits</h3>
+            <p>
+              Exploring beginner-friendly electronics kits and project
+              learning resources for students.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon icon-yellow">⌘</div>
+            <h3>Web Development</h3>
+            <p>
+              Learning to create modern websites with responsive layouts,
+              clear interfaces and useful features.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon icon-purple">✦</div>
+            <h3>Digital Solutions</h3>
+            <p>
+              Exploring creative digital tools, useful applications
+              and technology-based ideas.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon icon-green">♧</div>
+            <h3>Innovation & Learning</h3>
+            <p>
+              Developing prototypes, testing ideas and learning through
+              experiments, research and problem-solving.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUR APPROACH -->
+    <section class="section">
+      <div class="container">
+        <div class="feature-band reveal">
+          <span class="eyebrow"
+            style="color:white;background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.2)">
+            Our Approach
+          </span>
+
+          <h2>Build skills. Test ideas.<br>Keep exploring.</h2>
+
+          <p>
+            Real learning happens when curiosity turns into experiments.
+            We focus on understanding the basics, building prototypes
+            and improving them step by step.
+          </p>
+
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>01 — Learn</strong>
+              <span>Understand the concepts behind the technology.</span>
+            </div>
+
+            <div class="feature-item">
+              <strong>02 — Experiment</strong>
+              <span>Turn concepts into small practical prototypes.</span>
+            </div>
+
+            <div class="feature-item">
+              <strong>03 — Improve</strong>
+              <span>Test, discover problems and refine the idea.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow"><span class="dot"></span> Project Lab</span>
+          <h2>From imagination to <span class="gradient-text">prototype.</span></h2>
+          <p>
+            Areas of exploration for future projects, experiments
+            and educational technology concepts.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <div class="project-art art-one">
+              <div class="project-symbol">⌂</div>
+            </div>
+
+            <div class="project-info">
+              <span class="project-tag">SMART AUTOMATION</span>
+              <h3>AI Nexa Smart Sustainable City</h3>
+              <p>
+                A smart-city model concept exploring connected homes,
+                energy awareness, traffic systems, waste management
+                and water recycling.
+              </p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-art art-two">
+              <div class="project-symbol">⌘</div>
+            </div>
+
+            <div class="project-info">
+              <span class="project-tag">ELECTRONICS & IoT</span>
+              <h3>Sensor-Based Projects</h3>
+              <p>
+                Exploring microcontrollers and sensors to build
+                educational prototypes for monitoring, alerts
+                and simple automation.
+              </p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-art art-three">
+              <div class="project-symbol">▣</div>
+            </div>
+
+            <div class="project-info">
+              <span class="project-tag">WEB DEVELOPMENT</span>
+              <h3>Digital Experiences</h3>
+              <p>
+                Learning to create responsive websites and intuitive
+                interfaces that present ideas clearly.
+              </p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-art art-four">
+              <div class="project-symbol">✦</div>
+            </div>
+
+            <div class="project-info">
+              <span class="project-tag">FUTURE EXPLORATION</span>
+              <h3>Learning Kits & Prototypes</h3>
+              <p>
+                Exploring beginner-friendly project concepts that
+                help students understand electronics and programming
+                through practical learning.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <p class="project-note">
+          These are project areas and concepts. Features, availability
+          and development status may change as the initiative grows.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow"><span class="dot"></span> How We Work</span>
+          <h2>Small steps. <span class="gradient-text">Big possibilities.</span></h2>
+          <p>
+            A simple approach to turning an idea into a learning experience.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-step reveal">
+            <div class="step-number">01</div>
+            <h3>Explore the Problem</h3>
+            <p>
+              Identify a useful idea and understand the problem
+              it is intended to address.
+            </p>
+          </article>
+
+          <article class="process-step reveal">
+            <div class="step-number">02</div>
+            <h3>Design & Build</h3>
+            <p>
+              Plan the concept, select suitable tools and develop
+              a basic prototype.
+            </p>
+          </article>
+
+          <article class="process-step reveal">
+            <div class="step-number">03</div>
+            <h3>Test & Learn</h3>
+            <p>
+              Evaluate the prototype, learn from the results
+              and identify improvements.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-box reveal">
+          <span class="eyebrow"><span class="dot"></span> Get in Touch</span>
+
+          <h2>Have an idea?<br><span class="gradient-text">Let's explore it.</span></h2>
+
+          <p>
+            Interested in electronics, student projects, web development
+            or creative technology? Contact details will be added when
+            an official contact channel is established.
+          </p>
+
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="#home">Back to Home ↑</a>
+            <a class="btn btn-secondary" href="#projects">Explore Projects</a>
+          </div>
+
+          <div class="contact-note">
+            AN Technologies · Powered by AN Group
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong><span class="gradient-text">AN TECHNOLOGIES</span></strong>
+        <span>Powered by AN Group</span>
+        <br>
+        <span>Founded by Abhranil Sarkar</span>
+      </div>
+
+      <div class="footer-copy">
+        <div>Innovation begins with an idea.</div>
+        <div>© <span id="year"></span> AN Technologies.</div>
+        <div>All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Automatically update the copyright year.
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Reveal sections gently while scrolling.
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries, currentObserver) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              currentObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      revealElements.forEach(element => observer.observe(element));
+    } else {
+      revealElements.forEach(element =>
+        element.classList.add("visible")
+      );
+    }
+  </script>
+</body>
+  </html>
